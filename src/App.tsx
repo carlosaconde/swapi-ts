@@ -1,24 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+
+// import { CircularProgress } from '@mui/material';
+
+// import ls from './pngwing.com.png';
+import NavBar from './components/NavBar';
+import './components/ui/styles.css'
+
+
+import { Navigation } from './routes/Navigation';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='pages' style={{display:'flex',
+    justifyContent:'center',
+    alignContent:'center',
+    }}>
+    <Navigation/>
+       
+        
+        
     </div>
   );
 }
