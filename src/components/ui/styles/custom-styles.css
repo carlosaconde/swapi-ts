@@ -1,5 +1,7 @@
 .loader-container {
     position: relative;
+    display: flex;
+    justify-content: center;
     width: 100px; /* Ajusta el tamaño según tus necesidades */
     height: 100px; /* Ajusta el tamaño según tus necesidades */
   }
@@ -8,8 +10,10 @@
     position: absolute;
     width: 100%;
     height: 100%;
-    background-image: url('/src/sable-luke.png'); /* Ruta a tu imagen */
+    background-image: url('../../sable-luke.png'); /* Ruta a tu imagen */
     background-size: cover;
+  
+  
   }
 
 .custom-navbar{

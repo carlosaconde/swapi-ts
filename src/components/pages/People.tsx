@@ -8,43 +8,17 @@ import Paper from "@mui/material/Paper";
 import { useFetch } from "../hooks/useFetch";
 import { useEffect, useState } from "react";
 import Loader from "../ui/Loader";
-import Container from '@mui/material/Container';
+import { Box } from "@mui/material";
+import { DataCharacter } from "../../types";
 
-export interface Data {
-  count: number;
-  next: string;
-  previous: null;
-  results: Result[];
-}
 
-export interface Result {
-  name: string;
-  height: string;
-  mass: string;
-  hair_color: string;
-  skin_color: string;
-  eye_color: string;
-  birth_year: string;
-  gender: Gender;
-  homeworld: string;
-  films: string[];
-  species: string[];
-  vehicles: string[];
-  starships: string[];
-  created: Date;
-  edited: Date;
-  url: string;
-}
 
-export enum Gender {
-  Female = "female",
-  Male = "male",
-  NA = "n/a",
-}
+
+
 export const People = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  const data: Data = useFetch("https://swapi.dev/api/people") as Data;
+  const data: DataCharacter = useFetch("https://swapi.dev/api/people") as DataCharacter;
 
   useEffect((): any => {
     if (data.count === 0) {
@@ -56,9 +30,13 @@ export const People = () => {
   }, [data, isLoading]);
 
   return (
-    
-       
-      <TableContainer  component={Paper} sx={{ mt: 10 }}>
+      <Box>
+      {isLoading && <Loader />}
+      
+            
+            {!isLoading && data
+              ? 
+              <TableContainer  component={Paper} sx={{ mt: 10 }}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
             <TableRow>
@@ -70,9 +48,7 @@ export const People = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {isLoading && <Loader />}
-            {!isLoading && data
-              ? data.results.map((row) => (
+              {data.results.map((row) => (
                   <TableRow
                     key={row.name}
                     sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
@@ -85,14 +61,17 @@ export const People = () => {
                     <TableCell align="left">{row.mass}</TableCell>
                     <TableCell align="left">{row.hair_color}</TableCell>
                   </TableRow>
-                ))
+                ))}
+
+
+                </TableBody>
+                </Table>
+              </TableContainer>
               : null}
            
-          </TableBody>
-        </Table>
-      </TableContainer>
+          
      
-      
+      </Box>
     
   );
 };

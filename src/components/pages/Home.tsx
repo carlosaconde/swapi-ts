@@ -1,11 +1,10 @@
-
+import Loader from '../ui/Loader';
 
 
 export const Home = () => {
   return (
-    <div>
-      <span> home hjhkhjkhjkhjkuhjkhj</span>
-      <img src="/pngwing.com.png" alt="" />
+    <div style={{margin:200,color:'whitesmoke'}}>
+      <Loader/>
     </div>
   )
 }

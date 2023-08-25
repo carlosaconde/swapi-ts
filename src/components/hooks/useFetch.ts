@@ -1,10 +1,11 @@
 import axios from "axios";
 import { useState } from "react";
 import { useEffect } from "react";
-import {Data } from "../pages/People";
+import { DataStarship,DataCharacter, DataFilms } from "../../types";
 
-export const useFetch = (url:string):Data|null => {
-  const [resp, setResp] = useState<Data|null>({ count: 0, next: "", previous: null, results: [] });
+
+export const useFetch = (url:string):DataStarship|DataCharacter|DataFilms|null => {
+  const [resp, setResp] = useState<DataStarship|DataCharacter|DataFilms|null>({ count: 0, next: "", previous: null, results: [] });
   
   try {
     
